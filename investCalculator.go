@@ -8,11 +8,27 @@ import (
 func InvestCalculator() {
 	const inflationRate = 2.5
 
+	fmt.Println("Invest Calculator")
+
+	investAmount, expectReturn, years := inputDataInvest()
+	investmentAmountReturned, futureRealValue := InvestReturnCalculations(investAmount, expectReturn, inflationRate, years)
+
+	fmt.Printf("Return amount : %.2f\n", investmentAmountReturned)
+	fmt.Printf("Real value after inflation: %.2f\n", futureRealValue)
+
+}
+
+func InvestReturnCalculations(investAmount int, expectReturn float64, inflationRate float64, years int) (investmentAmountReturned float64, futureRealValue float64) {
+	investmentAmountReturned = float64(investAmount) * math.Pow(1+expectReturn/100, float64(years))
+	futureRealValue = investmentAmountReturned / math.Pow(1+inflationRate/100, float64(years))
+	return
+}
+
+func inputDataInvest() (int, float64, int) {
+
 	var investAmount int
 	var expectReturn float64
 	var years int
-
-	fmt.Println("Invest Calculator")
 
 	fmt.Print("Enter invest amount : ")
 	fmt.Scan(&investAmount)
@@ -21,9 +37,6 @@ func InvestCalculator() {
 	fmt.Print("Enter period: ")
 	fmt.Scan(&years)
 
-	investmentAmountReturned := float64(investAmount) * math.Pow(1+expectReturn/100, float64(years))
-	futureRealValue := investmentAmountReturned / math.Pow(1+inflationRate/100, float64(years))
-	fmt.Printf("Return amount : %.2f\n", investmentAmountReturned)
-	fmt.Printf("Real value after inflation: %.2f\n", futureRealValue)
+	return investAmount, expectReturn, years
 
 }
