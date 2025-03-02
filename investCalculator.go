@@ -37,6 +37,11 @@ func inputDataInvest() (int, float64, int) {
 	fmt.Print("Enter period: ")
 	fmt.Scan(&years)
 
+	if investAmount > 0 || years > 0 {
+		investAmount = 1000
+		years = 5
+	}
+
 	return investAmount, expectReturn, years
 
 }
