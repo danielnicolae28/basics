@@ -1,7 +1,10 @@
 package main
 
 import (
+	"errors"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 func Bank() {
@@ -23,6 +26,7 @@ func Bank() {
 			fmt.Println("Thank you for working with us!")
 			return
 		}
+
 	}
 
 }
@@ -64,7 +68,9 @@ func WithdrawMoney(balance int) {
 
 	} else {
 		balance -= withdrawAmount
-		fmt.Printf("Balance : %v \n", balance)
+		writeBalanceToFile(balance)
+		balanceFromFile, _ := readBalanceFromFile()
+		fmt.Printf("Balance : %v \n", balanceFromFile)
 	}
 }
 
@@ -79,7 +85,31 @@ func DepositMoney(balance int) {
 		fmt.Println("Please enter a positiv amount ! ")
 	} else {
 		balance += depositAmount
-		fmt.Printf("Your balance is : %v \n", balance)
+		writeBalanceToFile(balance)
+		balanceFromFile, _ := readBalanceFromFile()
+		fmt.Printf("Your balance is : %v \n", balanceFromFile)
 	}
 
+}
+
+func writeBalanceToFile(balance int) {
+	balanceText := fmt.Sprint(balance)
+	os.WriteFile("balance.json", []byte(balanceText), 0644)
+}
+func readBalanceFromFile() (float64, error) {
+
+	data, err := os.ReadFile("balance.txt")
+
+	if err != nil {
+		return 1000, errors.New("failed to parse stored data")
+	}
+	balanceText := string(data)
+
+	balance, err := strconv.ParseFloat(balanceText, 64)
+
+	if err != nil {
+		return 1000, errors.New("failed to convert stored data")
+	}
+
+	return balance, nil
 }
