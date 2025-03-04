@@ -1,10 +1,9 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"os"
-	"strconv"
+
+	"github.com/danielnicolae28/basics/fileops"
 )
 
 func Bank() {
@@ -64,12 +63,12 @@ func WithdrawMoney(balance int) {
 	fmt.Scan(&withdrawAmount)
 
 	if balance < withdrawAmount {
-		fmt.Printf("You don't have enough  money, please enter a sum equal or lower to your balance : %v : ", balance)
+		fmt.Printf("You don't have enough  money, please enter a sum equal or lower than your balance : %v : ", balance)
 
 	} else {
 		balance -= withdrawAmount
-		writeBalanceToFile(balance)
-		balanceFromFile, _ := readBalanceFromFile()
+		fileops.WriteBalanceToFile(balance)
+		balanceFromFile, _ := fileops.ReadBalanceFromFile()
 		fmt.Printf("Balance : %v \n", balanceFromFile)
 	}
 }
@@ -85,31 +84,9 @@ func DepositMoney(balance int) {
 		fmt.Println("Please enter a positiv amount ! ")
 	} else {
 		balance += depositAmount
-		writeBalanceToFile(balance)
-		balanceFromFile, _ := readBalanceFromFile()
+		fileops.WriteBalanceToFile(balance)
+		balanceFromFile, _ := fileops.ReadBalanceFromFile()
 		fmt.Printf("Your balance is : %v \n", balanceFromFile)
 	}
 
-}
-
-func writeBalanceToFile(balance int) {
-	balanceText := fmt.Sprint(balance)
-	os.WriteFile("balance.json", []byte(balanceText), 0644)
-}
-func readBalanceFromFile() (float64, error) {
-
-	data, err := os.ReadFile("balance.txt")
-
-	if err != nil {
-		return 1000, errors.New("failed to parse stored data")
-	}
-	balanceText := string(data)
-
-	balance, err := strconv.ParseFloat(balanceText, 64)
-
-	if err != nil {
-		return 1000, errors.New("failed to convert stored data")
-	}
-
-	return balance, nil
 }
