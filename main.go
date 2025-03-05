@@ -1,10 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/danielnicolae28/basics/structs"
+)
 
 func main() {
 	fmt.Println("Hello World")
 	// InvestCalculator()
-	pointers()
+	// pointers()
 	// Bank()
+	structs.Structs()
 }
