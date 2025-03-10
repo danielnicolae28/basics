@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/danielnicolae28/basics/structsproject"
+	"github.com/danielnicolae28/basics/interfaces"
 )
 
 func main() {
@@ -12,5 +12,6 @@ func main() {
 	// pointers()
 	// Bank()
 	//structs.Structs()
-	structsproject.Notes()
+	// structsproject.Notes()
+	interfaces.InterfaceLacture()
 }
