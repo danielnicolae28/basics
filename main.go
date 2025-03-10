@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/danielnicolae28/basics/structs"
+	"github.com/danielnicolae28/basics/structsproject"
 )
 
 func main() {
@@ -11,5 +11,6 @@ func main() {
 	// InvestCalculator()
 	// pointers()
 	// Bank()
-	structs.Structs()
+	//structs.Structs()
+	structsproject.Notes()
 }

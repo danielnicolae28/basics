@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+type customString string //  custom type
+
 type User struct {
 	FirstName string // fields and fields types
 	LastName  string
