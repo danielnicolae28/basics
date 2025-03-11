@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/danielnicolae28/basics/interfaces"
+	"github.com/danielnicolae28/basics/arraysmapsslice"
 )
 
 func main() {
@@ -13,5 +13,6 @@ func main() {
 	// Bank()
 	//structs.Structs()
 	// structsproject.Notes()
-	interfaces.InterfaceLacture()
+	//interfaces.InterfaceLacture()
+	arraysmapsslice.List()
 }
