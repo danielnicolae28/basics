@@ -5,7 +5,7 @@ import "fmt"
 func List() {
 	fmt.Println("Arrays, slices and maps")
 	var producNames = [4]string{"Book"}
-	prices := [4]float64{20.2, 43.5, 9.9, 10.2}
+	prices := []float64{20.2, 43.5, 9.9, 10.2}
 
 	producNames[2] = "carpet"
 	fmt.Println(prices[1])
@@ -21,9 +21,15 @@ func List() {
 		can't  start at a negativ index or go beyond array length
 		slices can be crated based on other slices
 	*/
-	featuredPrice := prices[1:3]
+	featuredPrice := prices[1:]
 	fmt.Println(featuredPrice)
 
 	fmt.Println(len(prices), cap(prices))
 	fmt.Println(len(featuredPrice), cap(featuredPrice))
+
+	/// len for length of slice/array
+	/// cap for capacity
+	/// append is used to add values in a slice
+	newPrices := append(featuredPrice, 6.99)
+	fmt.Println(newPrices)
 }
