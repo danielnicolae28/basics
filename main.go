@@ -15,5 +15,6 @@ func main() {
 	// structsproject.Notes()
 	//interfaces.InterfaceLacture()
 	//arraysmapsslice.List()
-	arraysmapsslice.Practice()
+	//arraysmapsslice.Practice()
+	arraysmapsslice.Maps()
 }
