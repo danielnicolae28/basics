@@ -2,6 +2,8 @@ package arraysmapsslice
 
 import "fmt"
 
+type floatMap map[string]float64
+
 func Maps() {
 	fmt.Println("Maps")
 
@@ -12,4 +14,14 @@ func Maps() {
 	} /// [string] is the value type
 
 	fmt.Println(websites["google"])
+
+	courseRatings := make(floatMap, 3)
+
+	courseRatings["go"] = 5.0
+
+	for index, value := range courseRatings {
+		fmt.Println(index)
+		fmt.Println(value)
+	}
+
 }

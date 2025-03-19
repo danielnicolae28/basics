@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/danielnicolae28/basics/arraysmapsslice"
+	"github.com/danielnicolae28/basics/functions"
 )
 
 func main() {
@@ -16,5 +16,6 @@ func main() {
 	//interfaces.InterfaceLacture()
 	//arraysmapsslice.List()
 	//arraysmapsslice.Practice()
-	arraysmapsslice.Maps()
+	// arraysmapsslice.Maps()
+	functions.Functions()
 }
